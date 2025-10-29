@@ -1,0 +1,14 @@
+# netlify.toml
+[build]
+  command = "echo 'Construindo Projeto Vagas Turbo...'"
+  publish = "/"  # A raiz é o diretório de publicação
+
+[functions]
+  directory = "functions" # Indica onde estão as funções Serverless
+
+# Redirecionamento para a nossa função API
+# Todo tráfego para /api/ será direcionado para functions/api.js
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200

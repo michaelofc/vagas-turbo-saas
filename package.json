@@ -1,7 +1,27 @@
 {
+  "name": "vagas-turbo-saas",
+  "version": "1.0.0",
+  "description": "Widget de urgência para lançamento usando Netlify Functions",
+  "main": "functions/api.js",
+  "scripts": {
+    "start": "netlify dev",
+    "build": "echo 'Build concluído - arquivos estáticos prontos'",
+    "dev": "netlify dev"
+  },
+  "keywords": [
+    "netlify",
+    "serverless",
+    "saas"
+  ],
+  "author": "Michael Rodrigues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michaelofc/vagas-turbo-saas.git"
+  },
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "serverless-http": "^4.0.0"
+    "express": "^4.18.2",
+    "serverless-http": "^3.2.0",
+    "cors": "^2.8.5"
   }
 }

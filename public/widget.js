@@ -20,7 +20,6 @@
     let elementoWidget = null;
     let contadorSimulado = 0;
 
-
     // ----------------------------------------------------
     // FUNÇÕES DE EXIBIÇÃO
     // ----------------------------------------------------
@@ -108,7 +107,7 @@
             // Se o servidor retornar 403 (Bloqueio/Reembolso)
             if (response.status === 403) {
                 console.error("Vagas Turbo: Acesso revogado. Removendo Widget.");
-                elementoWidget.remove();
+                if (elementoWidget) elementoWidget.remove();
                 clearInterval(intervaloAPI);
                 clearInterval(intervaloSimulacao);
                 return;

@@ -1,10 +1,12 @@
 # netlify.toml
 [build]
-  command = "echo 'Construindo Projeto Vagas Turbo...'"
-  publish = "/"  # A raiz é o diretório de publicação
+  command = "npm run build"
+  publish = "public"
+  functions = "functions"
 
 [functions]
-  directory = "functions" # Indica onde estão as funções Serverless
+  directory = "functions"
+  node_bundler = "esbuild"
 
 # Redirecionamento para a nossa função API
 # Todo tráfego para /api/ será direcionado para functions/api.js

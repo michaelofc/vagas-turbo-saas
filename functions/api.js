@@ -4,8 +4,17 @@ const serverless = require('serverless-http');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());
-app.use(express.json());
+
+// Configuração CORS mais robusta
+app.use(cors({
+    origin: true,
+    credentials: true,
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true }));
 
 // ** SIMULAÇÃO DE BANCO DE DADOS (MVP) **
 // Em um SaaS real, use um DB externo.
@@ -61,6 +70,13 @@ app.get('/api/status/:widgetID', (req, res) => {
         vagasTotais: cliente.vagasTotais,
         lastUpdated: new Date().toISOString() 
     });
+});
+
+// ==========================================================
+// HANDLER PARA PREFLIGHT CORS (OPTIONS)
+// ==========================================================
+app.options('*', (req, res) => {
+    res.status(200).end();
 });
 
 // ==========================================================
